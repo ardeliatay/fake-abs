@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="popup.js"></script>
+    <style>
+      html, *, :root {
+        font-family: Helvetica, sans-serif;
+        font-weight: 100;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      header {
+        background: #223;
+        width: 100%;
+        color: #F0F0F0;
+        height: 3rem;
+        margin-bottom: 1rem;
+        padding: 1rem 0;
+        text-align: center;
+      }
+
+      li { 
+        background: #F0F0F0;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        text-align: start;
+        border: 1px solid #D0D0D0;
+        margin: 0.2rem 1rem;
+        padding: 0.4rem 1rem;
+       }
+
+       li:hover, li:nth-child(odd):hover {
+        background: #DADAFF;
+       }
+
+       li:nth-child(odd) {
+        background: #FAFAFA;
+       }
+       
+       li > * {
+        margin: 0.2em 1em;
+       }
+    </style>
+  </head>
+<body>
+  <header>
+    <h1>Active A/B Tests</h1>
+  </header>
+  <ul id="experiments-list"></ul>
+</body>
+</html>

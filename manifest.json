@@ -1,0 +1,20 @@
+{
+  "name": "AB Toggle",
+  "version": "1.0",
+  "description": "Browser extension that allows toggling of A/B tests on the FE without changing account state",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }
+],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/logo.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version": 3
+}
