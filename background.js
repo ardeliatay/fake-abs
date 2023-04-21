@@ -19,6 +19,7 @@ async function init() {
 async function relayExperimentUpdate(key, value) {
   try {
     const tabs = await browser.tabs.query({ currentWindow: true, active: true})
+
     browser.tabs.sendMessage(tabs[0].id, { message: 'Updating the experiment', key, variant: value });
   } catch(error) {
     console.log(`Error: ${error}`);

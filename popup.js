@@ -11,14 +11,20 @@ async function popupInit() {
 function showExperiments(experiments) {
   const list = document.getElementById("experiments-list");
 
-  if (experiments) {
+  if (!experiments || Object.keys(experiments).length === 0) {
+    const p = document.createElement("p");
+    const message = document.createTextNode("No active A/B tests found");
+    p.appendChild(message);
+    
+    list.appendChild(p);
+  } else {
     for (const key in experiments) {
       const experimentLi = document.createElement('li');
       experimentLi.innerHTML = `<strong>${key}</strong>`;
       const experimentInputElement = document.createElement('input');
       experimentInputElement.value = experiments[key];
       experimentLi.append(experimentInputElement);
-      experimentInputElement.addEventListener('input', (e) => { console.log(e); e.target.dataset.changed = true });
+      experimentInputElement.addEventListener('input', (e) => { e.target.dataset.changed = true });
       experimentInputElement.addEventListener('blur', (e) => {
         if (e.target.dataset.changed) {
           captureExperimentUpdate(key, e.target.value);
@@ -28,12 +34,6 @@ function showExperiments(experiments) {
       experimentLi.addEventListener('click', () => { experimentInputElement.focus() });
       list.append(experimentLi);
     }
-  } else {
-    const p = document.createElement("p");
-    const message = document.createTextNode("No active A/B tests found");
-    p.appendChild(message);
-
-    list.appendChild(p);
   }
 }
 
